@@ -1,0 +1,8 @@
+{
+  "name": "Montecristo2",
+  "app_id": "bc566350",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
