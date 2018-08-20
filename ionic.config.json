@@ -1,8 +1,8 @@
 {
   "name": "Montecristo2",
-  "app_id": "bc566350",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "pro_id": "bc566350"
 }
