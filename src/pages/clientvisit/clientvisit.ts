@@ -6,6 +6,8 @@ import { AlertController } from 'ionic-angular';
 import { GeolocProvider } from '../../providers/geoloc/geoloc';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Visita } from '../../models/visita';
+import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 /**
  * Generated class for the ClientvisitPage page.
  *
@@ -38,7 +40,9 @@ export class ClientvisitPage {
               public navParams: NavParams,
               private geolocation: Geolocation,
               public http:HttpClient,  
-              public alertCtrl: AlertController      ) 
+              public alertCtrl: AlertController,
+              public storage:Storage,
+              private platform:Platform       ) 
   {
 
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -109,6 +113,21 @@ export class ClientvisitPage {
     visita.NextVisitDate=this.NextVisitDate;
     visita.NextVisitObservation=this.NextVisitObservation;
     visita.UserId=1;
+
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('username').then(val=>
+        {
+          if(val)
+          {
+            pros.UserId=val;
+          }
+          else
+          {
+            pros.UserId=0;
+          }
+        })
+    }
     
     console.log(visita);
 

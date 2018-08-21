@@ -6,6 +6,8 @@ import { Prospeccion } from '../../models/prospeccion';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import { AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -32,7 +34,9 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               private geolocation: Geolocation,
               public http:HttpClient,  
-              public alertCtrl: AlertController           
+              public alertCtrl: AlertController,
+              public storage:Storage,
+              private platform:Platform      
                ) 
   {
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -84,6 +88,21 @@ export class HomePage {
     pros.NextVisitDate=this.NextVisitDate;
     pros.NextVisitObservation=this.NextVisitObservation;
     pros.UserId=1;
+
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('username').then(val=>
+        {
+          if(val)
+          {
+            pros.UserId=val;
+          }
+          else
+          {
+            pros.UserId=0;
+          }
+        })
+    }
     
     console.log(pros);
 
