@@ -1,11 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Visitas a Clientes
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-item>     
+    <ion-input type="text" value="" placeholder="Cliente" [(ngModel)]="this.ClientName"></ion-input>
+  </ion-item> 
+  <button ion-button full (click)="Find()">Buscar</button>
+  <ion-list>
+    <button ion-item *ngFor="let item of clients" (click)="itemSelected(item)">
+      {{ item.ClientCompleteName }}
+    </button>  
+  </ion-list>
 </ion-content>

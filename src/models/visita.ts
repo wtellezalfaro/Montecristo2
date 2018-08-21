@@ -1,5 +1,6 @@
-export class Prospeccion 
+export class Visita 
 {
+    public ClientId: number;
     public FirstName: string;        
     public LastName: string;
     public LegalName: string;
