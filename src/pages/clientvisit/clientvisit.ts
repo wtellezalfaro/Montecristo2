@@ -120,11 +120,11 @@ export class ClientvisitPage {
         {
           if(val)
           {
-            pros.UserId=val;
+            visita.UserId=val;
           }
           else
           {
-            pros.UserId=0;
+            visita.UserId=0;
           }
         })
     }
