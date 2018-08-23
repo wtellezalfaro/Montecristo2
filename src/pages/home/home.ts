@@ -104,22 +104,9 @@ export class HomePage {
     pros.VisitObservation=this.VisitObservation;
     pros.NextVisitDate=this.NextVisitDate;
     pros.NextVisitObservation=this.NextVisitObservation;
-    pros.UserId=1;
+    pros.UserId= parseInt(this.UserId);
 
-    if(this.platform.is('cordova'))
-    {
-      this.storage.get('userId').then(val=>
-        {
-          if(val)
-          {
-            pros.UserId=val;
-          }
-          else
-          {
-            pros.UserId=0;
-          }
-        })
-    }
+    
     
     console.log(pros);
 

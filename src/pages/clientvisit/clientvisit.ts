@@ -35,6 +35,7 @@ export class ClientvisitPage {
   public VisitObservation: string;
   public NextVisitDate: Date;
   public NextVisitObservation: string;
+  public UserId: string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -73,7 +74,24 @@ export class ClientvisitPage {
       }
     );
     
-    //
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('userId').then(val=>
+        {
+          if(val)
+          {
+            this.UserId=val;
+          }
+          else
+          {
+            this.UserId='0';
+          }
+        })
+    }
+    else
+    {
+      this.UserId='1';
+    }
   }
 
   showSuccesAlert() {
@@ -112,22 +130,8 @@ export class ClientvisitPage {
     visita.VisitObservation=this.VisitObservation;
     visita.NextVisitDate=this.NextVisitDate;
     visita.NextVisitObservation=this.NextVisitObservation;
-    visita.UserId=1;
+    visita.UserId=parseInt(this.UserId);
 
-    if(this.platform.is('cordova'))
-    {
-      this.storage.get('userId').then(val=>
-        {
-          if(val)
-          {
-            visita.UserId=val;
-          }
-          else
-          {
-            visita.UserId=0;
-          }
-        })
-    }
     
     console.log(visita);
 
