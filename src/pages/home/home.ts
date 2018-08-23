@@ -14,7 +14,7 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  public UserId: string;
   public lat: number;
   public lng: number;
   public FirstName: string;
@@ -48,7 +48,24 @@ export class HomePage {
     });
 
     
-    
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('userId').then(val=>
+        {
+          if(val)
+          {
+            this.UserId=val;
+          }
+          else
+          {
+            this.UserId='0';
+          }
+        })
+    }
+    else
+    {
+      this.UserId='1';
+    }
 
   }
 
@@ -91,7 +108,7 @@ export class HomePage {
 
     if(this.platform.is('cordova'))
     {
-      this.storage.get('username').then(val=>
+      this.storage.get('userId').then(val=>
         {
           if(val)
           {

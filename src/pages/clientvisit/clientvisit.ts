@@ -116,7 +116,7 @@ export class ClientvisitPage {
 
     if(this.platform.is('cordova'))
     {
-      this.storage.get('username').then(val=>
+      this.storage.get('userId').then(val=>
         {
           if(val)
           {
