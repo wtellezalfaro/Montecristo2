@@ -56,7 +56,7 @@ export class ClientvisitPage {
 
     this.item = navParams.get('item');
     
-    http.get('http://montecristows.ttsoluciones.com/api/Client/'+this.item).subscribe(
+    http.get('http://ionlifems.ttsoluciones.com/api/Client/'+this.item).subscribe(
       (data) => { // Success
         this.client = data['client'];
         console.log(data['client']); 

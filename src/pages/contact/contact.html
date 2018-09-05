@@ -1,17 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Pedidos del Dia
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+    <ion-list-header>Seleccine el Pedido</ion-list-header>
+    <button ion-item *ngFor="let item of orders" (click)="itemSelected(item)">
+      {{ item.OrderNum }}. {{ item.LocalizationName }} - {{ item.ClientCompleteName }} - {{ item.ClientAddress }}
+    </button>  
   </ion-list>
 </ion-content>
