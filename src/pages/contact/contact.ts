@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { ClientvisitPage } from '../clientvisit/clientvisit'
+import { ClientorderPage } from '../clientorder/clientorder'
 
 @Component({
   selector: 'page-contact',
@@ -13,7 +13,7 @@ export class ContactPage {
   constructor(public navCtrl: NavController,
               public http:HttpClient) {
 
-                this.http.get('http://ionlifems.ttsoluciones.com/api/order').subscribe(
+                this.http.get('http://montecristows.ttsoluciones.com/api/order').subscribe(
                   (data) => { // Success
                     this.orders = data['orders'];
                     console.log(data['orders']);        
@@ -28,7 +28,7 @@ export class ContactPage {
   itemSelected(item)
   {
     console.log(item);
-    this.navCtrl.push( ClientvisitPage, {item: item.ClientId} );
+    this.navCtrl.push( ClientorderPage, {item: item} );
   }
 
 }
