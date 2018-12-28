@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { GeolocProvider } from '../../providers/geoloc/geoloc';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Prospeccion } from '../../models/prospeccion';

@@ -10,6 +10,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ClientvisitPage } from '../pages/clientvisit/clientvisit';
+import { AssistancePage } from '../pages/assistance/assistance';
 import { ClientorderPage } from '../pages/clientorder/clientorder';
 import { LoginPage } from '../pages/login/login';
 
@@ -35,6 +36,7 @@ import { MembershipProvider } from '../providers/membership/membership';
     TabsPage,
     ClientvisitPage,
     ClientorderPage,
+    AssistancePage,
     LoginPage
   ],
   imports: [
@@ -52,6 +54,7 @@ import { MembershipProvider } from '../providers/membership/membership';
     MyApp,
     AboutPage,
     ContactPage,
+    AssistancePage,
     HomePage,
     TabsPage,
     ClientvisitPage,
