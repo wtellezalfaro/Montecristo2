@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController, Platform, ModalController } from "ionic-angular";
 import { Storage } from '@ionic/storage';
+import { SERVICES_URL } from "../../config/url.services";
+
 /*
   Generated class for the ShoppingcartProvider provider.
 

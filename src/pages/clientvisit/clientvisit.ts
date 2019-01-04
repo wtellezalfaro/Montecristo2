@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
 import { ProductseacrhPage } from '../productseacrh/productseacrh';
 import { ShoppingcartProvider } from '../../providers/shoppingcart/shoppingcart';
+import { SERVICES_URL } from "../../config/url.services";
 
 /**
  * Generated class for the ClientvisitPage page.
@@ -62,7 +63,7 @@ export class ClientvisitPage {
 
     this.item = navParams.get('item');
     
-    http.get('http://montecristows.ttsoluciones.com/api/Client/'+this.item).subscribe(
+    http.get(`${ SERVICES_URL }`+'/api/Client/'+this.item).subscribe(
       (data) => { // Success
         this.client = data['client'];
         console.log(data['client']); 
@@ -155,7 +156,7 @@ export class ClientvisitPage {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    this.http.post('http://montecristows.ttsoluciones.com/Client/Visit', body, httpOptions).subscribe(data=>this.showSuccesAlert(), 
+    this.http.post(`${ SERVICES_URL }`+'/Client/Visit', body, httpOptions).subscribe(data=>this.showSuccesAlert(), 
                                                                                                     (err)=>this.showErrorAlert(err));
                                               
      this.FirstName="";

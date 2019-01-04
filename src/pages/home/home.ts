@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
+import { SERVICES_URL } from "../../config/url.services";
 
 @Component({
   selector: 'page-home',
@@ -119,7 +120,7 @@ export class HomePage {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    this.http.post('http://montecristows.ttsoluciones.com/api/client', body, httpOptions).subscribe(data=>this.showSuccesAlert(), 
+    this.http.post(`${ SERVICES_URL }`+'/api/client', body, httpOptions).subscribe(data=>this.showSuccesAlert(), 
                                                                                                     (err)=>this.showErrorAlert(err));
                                               
      this.FirstName="";

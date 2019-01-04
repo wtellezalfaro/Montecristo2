@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { SERVICES_URL } from "../../config/url.services";
 /*
   Generated class for the MembershipProvider provider.
 
@@ -78,8 +78,11 @@ export class MembershipProvider {
   {
     return new Promise((resolve,reject) =>
     {
+      let url = `${ SERVICES_URL }`+'/api/user?username='+username+'&password='+password;
+      
+      //console.log(url);
 
-      this.http.get('http://montecristows.ttsoluciones.com/api/user?username='+username+'&password='+password).subscribe(
+      this.http.get(url).subscribe(
       (data) => { // Success
         //console.log(data['user']);  
         if(data!=null)

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { ClientorderPage } from '../clientorder/clientorder'
+import { SERVICES_URL } from "../../config/url.services";
+
 
 @Component({
   selector: 'page-contact',
@@ -14,7 +16,7 @@ export class ContactPage
   constructor(public navCtrl: NavController,
               public http:HttpClient) {
 
-                this.http.get('http://montecristows.ttsoluciones.com/api/order').subscribe(
+                this.http.get(`${ SERVICES_URL }`+'/api/order').subscribe(
                   (data) => { // Success
                     this.orders = data['orders'];
                     console.log(data['orders']);        
@@ -28,7 +30,7 @@ export class ContactPage
 
   Find()
   {
-    this.http.get('http://montecristows.ttsoluciones.com/order/SelectByDate?orderDeliveryDate='+this.OrderDeliveryDate).subscribe(
+    this.http.get(`${ SERVICES_URL }`+'/order/SelectByDate?orderDeliveryDate='+this.OrderDeliveryDate).subscribe(
       (data) => { // Success
         this.orders = data['orders'];
         console.log(data['orders']);        

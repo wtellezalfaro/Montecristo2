@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MembershipProvider } from '../../providers/membership/membership';
 import { TabsPage } from '../tabs/tabs';
-
+import { SERVICES_URL } from "../../config/url.services";
 
 /**
  * Generated class for the LoginPage page.

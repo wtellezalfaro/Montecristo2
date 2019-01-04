@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
+import { SERVICES_URL } from "../../config/url.services";
 
 /**
  * Generated class for the AssistancePage page.
@@ -81,7 +82,7 @@ export class AssistancePage {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    this.http.post('http://montecristows.ttsoluciones.com/api/employeemarkup', body, httpOptions).subscribe(data=>this.showSuccesAlert(), 
+    this.http.post(`${ SERVICES_URL }`+'/api/employeemarkup', body, httpOptions).subscribe(data=>this.showSuccesAlert(), 
                                                                                                     (err)=>this.showErrorAlert(err));
   }
 

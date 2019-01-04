@@ -4,6 +4,8 @@ import { GeolocProvider } from '../../providers/geoloc/geoloc';
 import { Geolocation } from '@ionic-native/geolocation';
 import {Observable} from 'rxjs/Observable';
 import { Platform } from 'ionic-angular';
+import { SERVICES_URL } from "../../config/url.services";
+
 /**
  * Generated class for the ClientorderPage page.
  *

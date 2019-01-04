@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { ShoppingcartProvider } from '../../providers/shoppingcart/shoppingcart';
+import { SERVICES_URL } from "../../config/url.services";
 
 /**
  * Generated class for the ProductseacrhPage page.
@@ -29,7 +30,7 @@ export class ProductseacrhPage {
 
   Find()
   {
-    this.http.get('http://montecristows.ttsoluciones.com/product/FindByName?productName='+this.ProductName).subscribe(
+    this.http.get(`${ SERVICES_URL }`+'/product/FindByName?productName='+this.ProductName).subscribe(
       (data) => { // Success
         this.products = data['products'];
         console.log(data['products']);        
