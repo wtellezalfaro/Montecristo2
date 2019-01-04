@@ -7,8 +7,9 @@ import { ClientorderPage } from '../clientorder/clientorder'
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
-export class ContactPage {
-
+export class ContactPage 
+{
+  public OrderDeliveryDate:Date;
   public orders:any[]=[];
   constructor(public navCtrl: NavController,
               public http:HttpClient) {
@@ -23,6 +24,19 @@ export class ContactPage {
                   }
                 );
 
+  }
+
+  Find()
+  {
+    this.http.get('http://montecristows.ttsoluciones.com/order/SelectByDate?orderDeliveryDate='+this.OrderDeliveryDate).subscribe(
+      (data) => { // Success
+        this.orders = data['orders'];
+        console.log(data['orders']);        
+      },
+      (error) =>{
+        console.error(error);
+      }
+    );
   }
 
   itemSelected(item)

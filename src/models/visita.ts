@@ -15,6 +15,8 @@ export class Visita
     public NextVisitDate: Date;
     public NextVisitObservation: string;
     public UserId: number;
+    public OrderDeliveryDate: Date;
+    public items: any[]; 
 
     constructor()
     {

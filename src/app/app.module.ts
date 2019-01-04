@@ -25,6 +25,9 @@ import { GeolocProvider } from '../providers/geoloc/geoloc';
 import { Prospeccion } from '../models/prospeccion';
 import { IonicStorageModule } from '@ionic/storage';
 import { MembershipProvider } from '../providers/membership/membership';
+import { ShoppingcartProvider } from '../providers/shoppingcart/shoppingcart';
+import { ProductProvider } from '../providers/product/product';
+import { ProductseacrhPage } from '../pages/productseacrh/productseacrh';
 
 
 @NgModule({
@@ -37,6 +40,7 @@ import { MembershipProvider } from '../providers/membership/membership';
     ClientvisitPage,
     ClientorderPage,
     AssistancePage,
+    ProductseacrhPage,
     LoginPage
   ],
   imports: [
@@ -55,6 +59,7 @@ import { MembershipProvider } from '../providers/membership/membership';
     AboutPage,
     ContactPage,
     AssistancePage,
+    ProductseacrhPage,
     HomePage,
     TabsPage,
     ClientvisitPage,
@@ -67,7 +72,9 @@ import { MembershipProvider } from '../providers/membership/membership';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GeolocProvider,
     Geolocation,
-    MembershipProvider
+    MembershipProvider,
+    ShoppingcartProvider,
+    ProductProvider
   ]
 })
 export class AppModule {}

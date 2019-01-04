@@ -8,6 +8,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Visita } from '../../models/visita';
 import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
+import { ProductseacrhPage } from '../productseacrh/productseacrh';
+import { ShoppingcartProvider } from '../../providers/shoppingcart/shoppingcart';
+
 /**
  * Generated class for the ClientvisitPage page.
  *
@@ -36,6 +39,8 @@ export class ClientvisitPage {
   public NextVisitDate: Date;
   public NextVisitObservation: string;
   public UserId: string;
+  public OrderDeliveryDate: Date;
+  pushPage: any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -43,9 +48,10 @@ export class ClientvisitPage {
               public http:HttpClient,  
               public alertCtrl: AlertController,
               public storage:Storage,
-              private platform:Platform       ) 
+              private platform:Platform,
+              public shoppingcartService:ShoppingcartProvider) 
   {
-
+    this.pushPage = ProductseacrhPage;
     this.geolocation.getCurrentPosition().then((resp) => {
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;      
@@ -97,7 +103,7 @@ export class ClientvisitPage {
   showSuccesAlert() {
     const alert = this.alertCtrl.create({
       title: 'Registro Insertado!',
-      subTitle: 'La prospección fue registrada Exitosamente!',
+      subTitle: 'La visita/pedido fue registrada Exitosamente!',
       buttons: ['OK']
     });
     alert.present();
@@ -110,6 +116,10 @@ export class ClientvisitPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  Insert()
+  {
   }
 
   Save()
@@ -131,7 +141,8 @@ export class ClientvisitPage {
     visita.NextVisitDate=this.NextVisitDate;
     visita.NextVisitObservation=this.NextVisitObservation;
     visita.UserId=parseInt(this.UserId);
-
+    visita.OrderDeliveryDate = this.OrderDeliveryDate;
+    visita.items=this.shoppingcartService.items;
     
     console.log(visita);
 
@@ -151,6 +162,7 @@ export class ClientvisitPage {
      this.LastName="";
      this.LegalName="";
      this.Address="";
+     this.shoppingcartService.items=[];
 
      this.navCtrl.pop();
 

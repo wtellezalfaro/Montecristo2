@@ -7,7 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Registro de Visita a Cliente</ion-title>
+    <ion-title>Visita a Cliente/Pedido</ion-title>
+    <ion-buttons end>
+
+      <button ion-button icon-only>
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="danger"
+                   class="carrito-numero" >{{ shoppingcartService.items.length }}
+        </ion-badge>
+      </button>
+
+      &nbsp;
+      &nbsp;
+
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -56,5 +69,45 @@
       <ion-input type="text" value="" placeholder="Observaciones Proxima Visita" [(ngModel)]="this.NextVisitObservation"></ion-input>
     </ion-item>
   </ion-list>
+  <hr>
+  
+  <h2>Pedido</h2>
+  <button ion-button full [navPush]="pushPage">+</button>
+  <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Fecha Entrega Pedido" [(ngModel)]="this.OrderDeliveryDate"></ion-datetime>
+  <ion-grid>
+    <ion-row *ngFor="let item of shoppingcartService.items; let i = index;">
+      <ion-col >
+        <p>{{ item.ProductId }}</p>
+      </ion-col>
+      <ion-col col-6>
+        <p>{{ item.ProductName }}</p>
+      </ion-col>
+      <ion-col>
+        <p>{{ item.ProductQuantity }}</p>
+      </ion-col>
+      <ion-col>        
+          <ion-input type="text" value="" placeholder="Precio" [(ngModel)]="this.item.ProductSalePrice"></ion-input>        
+      </ion-col>
+      <ion-col>
+        <button ion-button
+                color="danger"
+                outline
+                block
+                small
+                (click)="shoppingcartService.RemoveItem(i)">
+          X
+        </button>
+        <button ion-button
+                color="primary"
+                outline
+                block
+                small
+                (click)="shoppingcartService.AddExistingItem(i)">
+          +
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <button ion-button full (click)="Save()">Guardar</button>
 </ion-content>
