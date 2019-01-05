@@ -19,4 +19,28 @@
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
+  <ion-grid>
+      <ion-row>
+        <ion-col >
+            <p>{{ this.currentlat }}</p>
+        </ion-col>
+        <ion-col >
+            <p>{{ this.currentlng }}</p>
+        </ion-col>        
+      </ion-row>
+    </ion-grid>
+  <button ion-button full (click)="UpdateClient()">Actualizar Cliente</button>
+  <ion-grid>
+      <ion-row>
+        <ion-col >
+            <button ion-button color="primary" outline  block   small (click)="Delivered()">Entregado</button>
+        </ion-col>
+        <ion-col >
+            <button ion-button color="warning" outline  block   small (click)="NotDelivered()">No Entregado</button>
+        </ion-col>
+        <ion-col >
+            <button ion-button color="danger" outline  block   small (click)="Lagged()">Rezagado</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>
